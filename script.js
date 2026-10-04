@@ -233,7 +233,7 @@
     event.preventDefault();
     if (!form.reportValidity()) return;
     const message = form.dataset.accountForm === 'create'
-      ? 'That profile looks ready. This preview does not send or store your details.'
+      ? 'Your profile is ready. Your details have not been sent or stored.'
       : 'Sign-in preview complete. Code delivery and authentication are not connected.';
     showToast(message);
   }));
