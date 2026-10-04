@@ -2,7 +2,7 @@
 
 ## Brand and concept
 
-AnyService is a home-repair company built around a simple belief: good work should begin close to home. It connects people with local electricians, plumbers, carpenters and appliance-care pros for the everyday fixes that make a home feel like itself again. Instead of treating repair as a list of transactions, AnyService makes it a neighbourly exchange—with a clear place to start, a helpful human at the other end, and skilled hands that know the work. The identity pairs a deep, steady blue with repair-shop lime and warm coral. A welcoming launch sequence, playful original illustrations and a small visit picker turn the first step into part of the brand.
+AnyService is a home-repair company built around a simple belief: good work should begin close to home. It connects people with local electricians, plumbers, carpenters and appliance-care service providers for the everyday fixes that make a home feel like itself again. Instead of treating repair as a list of transactions, AnyService makes it a neighbourly exchange—with a clear place to start, a helpful human at the other end, and skilled hands that know the work. The identity pairs a deep, steady blue with repair-shop lime and warm coral. A welcoming launch sequence, playful original illustrations and a small visit picker turn the first step into part of the brand.
 
 ## Technology
 
