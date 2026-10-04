@@ -1,4 +1,4 @@
-/* AnyService interactions: launch reveal, scroll rhythm, service picker and local demo forms. */
+/* AnyService interactions: launch reveal, scroll rhythm, visit picker and email requests. */
 (() => {
   'use strict';
 
@@ -180,34 +180,7 @@
     updateVisitBuilder();
   }));
 
-  // Account tabs and successful-looking front-end previews never send or persist personal details.
-  const accountTabs = [...document.querySelectorAll('[data-account-tab]')];
-  const accountForms = [...document.querySelectorAll('[data-account-form]')];
-  function showAccountForm(name) {
-    accountTabs.forEach((tab) => {
-      const active = tab.dataset.accountTab === name;
-      tab.classList.toggle('is-active', active);
-      tab.setAttribute('aria-selected', String(active));
-      tab.tabIndex = active ? 0 : -1;
-    });
-    accountForms.forEach((form) => {
-      const active = form.dataset.accountForm === name;
-      form.hidden = !active;
-      form.classList.toggle('is-active', active);
-    });
-  }
-  accountTabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => showAccountForm(tab.dataset.accountTab));
-    tab.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        event.preventDefault();
-        const next = accountTabs[(index + (event.key === 'ArrowRight' ? 1 : -1) + accountTabs.length) % accountTabs.length];
-        showAccountForm(next.dataset.accountTab);
-        next.focus();
-      }
-    });
-  });
-
+  const accountForm = document.querySelector('#form-request');
   const params = new URLSearchParams(window.location.search);
   const serviceField = document.querySelector('#profile-service');
   const serviceParam = params.get('service');
@@ -220,25 +193,41 @@
     timeField.value = timeParam;
   }
 
-  const toast = document.querySelector('#form-toast');
-  let toastTimer;
-  function showToast(message) {
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.add('is-visible');
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 4800);
-  }
-  accountForms.forEach((form) => form.addEventListener('submit', (event) => {
+  const phoneField = accountForm?.elements.namedItem('phone');
+  const emailField = accountForm?.elements.namedItem('email');
+  const validateContact = () => {
+    if (!phoneField || !emailField) return;
+    const hasContact = phoneField.value.trim() || emailField.value.trim();
+    const message = hasContact ? '' : 'Add a mobile number or email address so we can reply.';
+    phoneField.setCustomValidity(message);
+    emailField.setCustomValidity(message);
+  };
+  [phoneField, emailField].forEach((field) => field?.addEventListener('input', validateContact));
+
+  accountForm?.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (!form.reportValidity()) return;
-    const message = form.dataset.accountForm === 'create'
-      ? 'Your profile is ready. Your details have not been sent or stored.'
-      : 'Sign-in preview complete. Code delivery and authentication are not connected.';
-    showToast(message);
-  }));
+    validateContact();
+    if (!accountForm.reportValidity()) return;
+
+    const values = new FormData(accountForm);
+    const lines = [
+      `Name: ${values.get('name')}`,
+      values.get('phone') ? `Mobile: +91 ${values.get('phone')}` : '',
+      values.get('email') ? `Email: ${values.get('email')}` : '',
+      `Visit address: ${[
+        values.get('house'), values.get('society'), values.get('area'),
+        values.get('city'), values.get('district'), values.get('state'), values.get('pincode')
+      ].filter(Boolean).join(', ')}`,
+      values.get('service') ? `Service: ${values.get('service')}` : '',
+      values.get('time') ? `Preferred time: ${values.get('time')}` : '',
+      values.get('details') ? `What's stopped working: ${values.get('details')}` : ''
+    ].filter(Boolean);
+    const subject = 'AnyService visit request';
+    const body = `Hello AnyService,\n\nI'd like to request a visit. Here are my details:\n\n${lines.join('\n')}\n\nPlease let me know about availability and pricing before confirming the visit.\n`;
+    const recipient = accountForm.dataset.contactEmail;
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
 
   const year = document.querySelector('#year');
   if (year) year.textContent = String(new Date().getFullYear());
 })();
-

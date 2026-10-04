@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#18234d">
-  <meta name="description" content="Sign in or make an AnyService profile for a more helpful visit at home.">
-  <title>Your AnyService — A good day starts here.</title>
+  <meta name="description" content="Tell AnyService what needs fixing and prepare a visit request for a local service provider.">
+  <title>Request a visit — AnyService</title>
   <link rel="icon" href="assets/anyservice-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -14,65 +14,50 @@
 <body class="account-page">
   <div class="cursor-aura" aria-hidden="true"></div>
   <header class="account-header">
-    <a class="brand-lockup" href="index.html" aria-label="AnyService home"><img class="brand-mark" src="assets/anyservice-mark.svg" alt="" width="42" height="42"><span class="brand-name">Any<span>Service</span><i>®</i></span></a>
-    <a class="account-back" href="index.html"><span aria-hidden="true">←</span> Back to home</a>
+    <a class="brand-lockup" href="index.html" aria-label="AnyService home"><img class="brand-mark" src="assets/anyservice-mark.svg" alt="" width="42" height="42"><span class="brand-name">Any<span>Service</span></span></a>
+    <a class="account-back" href="index.html"><span aria-hidden="true">←</span> Back to homepage</a>
   </header>
   <main class="account-shell">
     <aside class="account-aside">
       <div class="account-aside-art" aria-hidden="true"><span class="aside-sun"></span><span class="aside-roof"></span><span class="aside-house"><i></i><b></b></span><span class="aside-star star-one">✳</span><span class="aside-star star-two">✳</span><span class="aside-tool">⌁</span></div>
-      <div class="account-aside-copy"><p class="eyebrow eyebrow--light"><span class="eyebrow-dot"></span> COME ON IN</p><h1>A better<br>home day<br><em>starts here.</em></h1><p>Your details help us find the right local person for your place. Take it one step at a time.</p></div>
+      <div class="account-aside-copy"><p class="eyebrow eyebrow--light"><span class="eyebrow-dot"></span> A GOOD PLACE TO START</p><h1>Let's get<br>that home<br><em>sorted.</em></h1><p>Tell us what's stopped working. We'll help you find the right local service provider.</p></div>
       <div class="aside-footer"><span>GOOD WORK · CLOSE BY</span><span>01 — ANYSERVICE</span></div>
     </aside>
 
     <section class="account-main" aria-labelledby="account-heading">
-      <div class="account-form-head"><p class="eyebrow"><span class="eyebrow-dot"></span> YOUR SERVICE PROFILE</p><h2 id="account-heading">Let's get you <em>sorted.</em></h2><p>Sign in to pick up where you left off, or tell us a little about your home.</p></div>
-      <div class="account-tabs" role="tablist" aria-label="Account options">
-        <button id="tab-sign-in" class="account-tab" type="button" role="tab" aria-selected="false" aria-controls="form-sign-in" data-account-tab="sign-in">Sign in</button>
-        <button id="tab-create" class="account-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="form-create" data-account-tab="create">Create a profile</button>
-      </div>
+      <div class="account-form-head"><p class="eyebrow"><span class="eyebrow-dot"></span> YOUR VISIT REQUEST</p><h2 id="account-heading">Where can we <em>help?</em></h2><p>Share a few details and prepare an email to our team. Your email app lets you review it before sending.</p></div>
 
-      <form class="account-form is-active" id="form-create" data-account-form="create" aria-labelledby="tab-create">
-        <div class="form-section-head"><span>01</span><div><h3>First, who's home?</h3><p>Just the name and number we should ask for.</p></div></div>
+      <form class="account-form is-active" id="form-request" data-account-form="request" data-contact-email="AnyService.support@gmail.com">
+        <p class="required-legend"><span aria-hidden="true">*</span> Required. Add a mobile number or email address so we can reply.</p>
+        <div class="form-section-head"><span>01</span><div><h3>Who should we contact?</h3><p>Your name and at least one way to reach you.</p></div></div>
         <div class="field-grid">
-          <label class="field field--full"><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="The name your neighbours know" required></label>
-          <label class="field"><span>Mobile number</span><div class="phone-input"><span>+91</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" pattern="[0-9 +()-]{10,16}" placeholder="98765 43210" required></div></label>
-          <label class="field"><span>Email address</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label class="field field--full"><span>Your name <b class="required-mark" aria-hidden="true">*</b></span><input name="name" type="text" autocomplete="name" placeholder="The name your neighbours know" required></label>
+          <label class="field"><span>Mobile number <small>OPTIONAL</small></span><div class="phone-input"><span>+91</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" pattern="[0-9 +()-]{10,16}" placeholder="98765 43210" aria-describedby="contact-hint"></div></label>
+          <label class="field"><span>Email address <small>OPTIONAL</small></span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="contact-hint"></label>
+          <span id="contact-hint" class="field-hint field--full">Please share either your mobile number or email address.</span>
         </div>
-        <div class="form-section-head form-section-head--later"><span>02</span><div><h3>Where should we come?</h3><p>A clear address helps us find the right nearby service provider.</p></div></div>
+        <div class="form-section-head form-section-head--later"><span>02</span><div><h3>Where should we visit?</h3><p>A clear address helps us find a nearby service provider.</p></div></div>
         <div class="field-grid">
-          <label class="field"><span>House / flat number</span><input name="house" type="text" autocomplete="address-line1" placeholder="e.g. 12B, 2nd floor" required></label>
+          <label class="field"><span>House / flat number <b class="required-mark" aria-hidden="true">*</b></span><input name="house" type="text" autocomplete="address-line1" placeholder="e.g. 12B, 2nd floor" required></label>
           <label class="field"><span>Society / building <small>OPTIONAL</small></span><input name="society" type="text" autocomplete="organization" placeholder="Building or society name"></label>
-          <label class="field"><span>Area / neighbourhood</span><input name="area" type="text" autocomplete="address-level3" placeholder="Your local area" required></label>
-          <label class="field"><span>City / town</span><input name="city" type="text" autocomplete="address-level2" placeholder="City or town" required></label>
-          <label class="field"><span>District</span><input name="district" type="text" autocomplete="address-level2" placeholder="District" required></label>
-          <label class="field"><span>State / union territory</span><select name="state" autocomplete="address-level1" required><option value="" disabled selected>Choose your state</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Andaman and Nicobar Islands</option><option>Chandigarh</option><option>Dadra and Nagar Haveli and Daman and Diu</option><option>Delhi</option><option>Jammu and Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option></select></label>
-          <label class="field"><span>PIN code</span><input name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{6}" maxlength="6" placeholder="6 digits" required></label>
+          <label class="field"><span>Area / neighbourhood <b class="required-mark" aria-hidden="true">*</b></span><input name="area" type="text" autocomplete="address-level3" placeholder="Your local area" required></label>
+          <label class="field"><span>City / town <b class="required-mark" aria-hidden="true">*</b></span><input name="city" type="text" autocomplete="address-level2" placeholder="City or town" required></label>
+          <label class="field"><span>District <b class="required-mark" aria-hidden="true">*</b></span><input name="district" type="text" autocomplete="address-level2" placeholder="District" required></label>
+          <label class="field"><span>State / union territory <b class="required-mark" aria-hidden="true">*</b></span><select name="state" autocomplete="address-level1" required><option value="" disabled selected>Choose your state</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Andaman and Nicobar Islands</option><option>Chandigarh</option><option>Dadra and Nagar Haveli and Daman and Diu</option><option>Delhi</option><option>Jammu and Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option></select></label>
+          <label class="field"><span>PIN code <b class="required-mark" aria-hidden="true">*</b></span><input name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{6}" maxlength="6" placeholder="6 digits" required></label>
         </div>
-        <div class="form-section-head form-section-head--later"><span>03</span><div><h3>What's on your mind?</h3><p>Point us in the right direction. We can fill in the details together.</p></div></div>
+        <div class="form-section-head form-section-head--later"><span>03</span><div><h3>What needs a hand?</h3><p>Share what you know. We can work out the rest together.</p></div></div>
         <div class="field-grid field-grid--last">
-          <label class="field"><span>Service to start with</span><select name="service" id="profile-service"><option value="">I'm not sure yet</option><option>Electrical</option><option>Plumbing</option><option>Carpentry</option><option>Appliance care</option></select></label>
-          <label class="field"><span>Good time to visit</span><select name="time"><option value="">Let's work it out</option><option>Soon as possible</option><option>A day that suits me</option><option>A weekday morning</option><option>A weekday afternoon</option><option>A weekday evening</option><option>A weekend</option></select></label>
+          <label class="field"><span>Service <small>OPTIONAL</small></span><select name="service" id="profile-service"><option value="">I'm not sure yet</option><option>Electrical</option><option>Plumbing</option><option>Carpentry</option><option>Appliance care</option></select></label>
+          <label class="field"><span>Preferred time <small>OPTIONAL</small></span><select name="time"><option value="">Let's work it out</option><option>As soon as possible</option><option>A day that suits me</option><option>A weekday morning</option><option>A weekday afternoon</option><option>A weekday evening</option><option>A weekend</option></select></label>
           <label class="field field--full"><span>A little more about it <small>OPTIONAL</small></span><textarea name="details" rows="3" placeholder="What's stopped working? Even a rough description helps."></textarea></label>
         </div>
-        <label class="privacy-check"><input type="checkbox" name="privacy" required><span>I'm happy for AnyService to use these details to help with my service request.</span></label>
-        <button class="button button--primary account-submit" type="submit">Save my demo profile <span aria-hidden="true">↗</span></button>
-        <p class="form-note"><span aria-hidden="true">✳</span> Your details stay on this page. Nothing is sent or stored.</p>
+        <p class="request-privacy">We'll put these details into an email addressed to AnyService. Review it in your email app and choose Send when you're ready. <a href="privacy.html">Read our privacy notice.</a></p>
+        <button class="button button--primary account-submit" type="submit">Prepare my email request <span aria-hidden="true">↗</span></button>
       </form>
-
-      <form class="account-form" id="form-sign-in" data-account-form="sign-in" aria-labelledby="tab-sign-in" hidden>
-        <div class="form-section-head"><span>↗</span><div><h3>Good to have you back.</h3><p>Enter the number or email connected to your profile.</p></div></div>
-        <div class="field-grid field-grid--sign-in">
-          <label class="field field--full"><span>Mobile number or email</span><input name="identity" type="text" autocomplete="username" placeholder="+91 mobile or you@example.com" required></label>
-          <label class="field field--full"><span>One-time access code</span><input name="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Enter your code" required></label>
-        </div>
-        <button class="button button--primary account-submit" type="submit">Continue to my profile <span aria-hidden="true">↗</span></button>
-        <p class="form-note"><span aria-hidden="true">✳</span> Code delivery and account sign-in are not connected yet.</p>
-      </form>
-      <div class="account-reassurance"><span>YOUR ADDRESS</span><p>Your address is shared only with the service provider assigned to your visit. <b>Care comes with the craft.</b></p></div>
+      <div class="account-reassurance"><span>BEFORE WE BEGIN</span><p>Confirm availability and the service price with your service provider before work starts. <b>Clear from the first hello.</b></p></div>
     </section>
   </main>
-  <footer class="account-footer"><span>© 2026 ANYSERVICE</span><a href="index.html">GOOD WORK. CLOSE BY. ↗</a></footer>
-  <div class="toast" id="form-toast" role="status" aria-live="polite"></div>
+  <footer class="account-footer"><span>© <span id="year">2026</span> ANYSERVICE</span><span><a href="privacy.html">Privacy notice</a> · <a href="index.html">Back to AnyService home ↗</a></span></footer>
 </body>
 </html>
-

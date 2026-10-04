@@ -288,7 +288,7 @@ html:not(.js) .intro-screen { display: none; }
 .footer-bottom a:hover { color: var(--lime); }
 .noscript-note { position: fixed; z-index: 1300; right: 1rem; bottom: 1rem; left: 1rem; padding: 1rem; border: 1px solid var(--coral); background: var(--cream); }
 
-/* Service profile and front-end sign-in demo. */
+/* Visit request and privacy notice pages. */
 .account-page { min-height: 100vh; background: var(--paper); }
 .account-header { position: relative; z-index: 2; display: flex; min-height: 76px; align-items: center; justify-content: space-between; padding: .7rem var(--gutter); border-bottom: 1px solid var(--line); }
 .account-back { display: inline-flex; align-items: center; gap: .5rem; color: #56607a; font-size: .76rem; font-weight: 650; transition: color .2s; }
@@ -325,10 +325,6 @@ html:not(.js) .intro-screen { display: none; }
 .account-form-head h2 { margin: 0; font-family: var(--display); font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 900; letter-spacing: -.085em; line-height: .98; }
 .account-form-head h2 em { color: var(--blue); font-style: normal; }
 .account-form-head > p:last-child { margin: .8rem 0 0; color: #697087; font-size: .82rem; }
-.account-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2rem; border-bottom: 1px solid var(--line); }
-.account-tab { min-height: 43px; border: 0; border-bottom: 2px solid transparent; color: #697087; background: transparent; cursor: pointer; text-align: center; font-size: .78rem; font-weight: 750; transition: color .2s, border-color .2s; }
-.account-tab:hover { color: var(--ink); }
-.account-tab.is-active { border-bottom-color: var(--coral); color: var(--ink); }
 .account-form { padding-top: 1.6rem; }
 .account-form[hidden] { display: none; }
 .account-form.is-active { animation: form-arrive .35s var(--ease-out) both; }
@@ -354,19 +350,28 @@ html:not(.js) .intro-screen { display: none; }
 .phone-input input { min-width: 0; border: 0; background: transparent; box-shadow: none !important; }
 .phone-input input:focus { outline: 0; }
 .field-grid--last { padding-bottom: 1.1rem; }
-.privacy-check { display: flex; align-items: flex-start; gap: .55rem; margin-top: .15rem; color: #6f7689; font-size: .66rem; line-height: 1.45; }
-.privacy-check input { flex: none; width: 15px; height: 15px; margin: 2px 0 0; accent-color: var(--blue); }
+.required-legend { margin: 1.35rem 0 1.15rem; color: #73798b; font-size: .67rem; }
+.required-legend > span, .required-mark { color: var(--coral); }
+.required-mark { font-size: .75rem; font-weight: 800; }
+.field-hint { color: #858a99; font-size: .62rem; }
+.request-privacy { margin: .5rem 0 0; color: #72788b; font-size: .67rem; line-height: 1.55; }
+.request-privacy a { color: var(--blue); font-weight: 750; text-decoration: underline; text-underline-offset: 2px; }
 .account-submit { width: 100%; justify-content: space-between; margin-top: 1.05rem; border: 0; cursor: pointer; }
-.form-note { display: flex; align-items: flex-start; gap: .5rem; margin: .85rem 0 0; color: #7d8291; font-size: .62rem; }
-.form-note > span { color: var(--coral); }
 .account-reassurance { display: grid; grid-template-columns: 110px 1fr; gap: .8rem; margin-top: 2.4rem; padding: 1rem 0 0; border-top: 1px solid var(--line); }
 .account-reassurance > span { color: var(--blue); font-size: .53rem; }
 .account-reassurance > p { margin: 0; color: #72788b; font-size: .67rem; }
 .account-reassurance b { color: var(--ink); }
 .account-footer { display: flex; min-height: 42px; justify-content: space-between; padding: 0 var(--gutter); color: #7a8092; font-size: .5rem; }
 .account-footer a { color: var(--blue); }
-.toast { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1500; max-width: min(400px, calc(100% - 2.5rem)); padding: 1rem 1.2rem; border: 1px solid var(--lime); border-radius: 4px; color: var(--cream); background: var(--ink); box-shadow: 0 10px 34px rgba(24,35,77,.22); font-size: .78rem; opacity: 0; pointer-events: none; transform: translateY(15px); transition: opacity .25s, transform .25s var(--ease-out); }
-.toast.is-visible { opacity: 1; transform: translateY(0); }
+
+.legal-shell { width: min(100% - 2.5rem, 780px); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0; color: var(--ink); }
+.legal-shell > .eyebrow { margin: 0 0 .9rem; }
+.legal-shell h1 { max-width: 720px; margin: 0; font-family: var(--display); font-size: clamp(2.8rem, 7vw, 5.3rem); font-weight: 900; letter-spacing: -.09em; line-height: .96; }
+.legal-updated { margin: .8rem 0 2.2rem; color: #73798b; font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; }
+.legal-shell > p:not(.eyebrow):not(.legal-updated) { color: #626a80; font-size: .94rem; line-height: 1.8; }
+.legal-shell h2 { margin: 2rem 0 .35rem; font-family: var(--display); font-size: 1.35rem; letter-spacing: -.045em; }
+.legal-shell a:not(.button) { color: var(--blue); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.legal-cta { margin-top: 1.2rem; }
 
 html.js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
 html.js .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -536,4 +541,3 @@ html.js .service-card:nth-child(4) { transition-delay: .24s; }
   body { color: #111; background: #fff; }
   .hero, .story, .visit-builder, .site-footer { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
-
