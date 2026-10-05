@@ -243,6 +243,17 @@ html:not(.js) .intro-screen { display: none; }
 .story-card-rings span:nth-child(3) { inset: 70px; }
 .story-card-label { position: relative; z-index: 1; margin: 0; color: var(--ink); font-size: .63rem; line-height: 1.6; }
 .story-card-illustration { position: absolute; top: 25%; left: 50%; width: 265px; height: 238px; transform: translateX(-50%); }
+/* The house follows scroll progress; the existing reveal observer gives older browsers a one-time entrance. */
+@keyframes story-house-drift { from { transform: translate3d(-50%, 34px, 0) rotate(-3deg); } to { transform: translate3d(-50%, -26px, 0) rotate(3deg); } }
+@keyframes story-house-arrive { from { transform: translate3d(-50%, 26px, 0) rotate(-3deg); } to { transform: translate3d(-50%, 0, 0) rotate(0); } }
+@keyframes story-house-drift-mobile { from { transform: translate3d(-50%, 24px, 0) rotate(-2deg) scale(.88); } to { transform: translate3d(-50%, -18px, 0) rotate(2deg) scale(.88); } }
+@keyframes story-house-arrive-mobile { from { transform: translate3d(-50%, 22px, 0) rotate(-2deg) scale(.82); } to { transform: translate3d(-50%, 0, 0) rotate(0) scale(.88); } }
+@supports (animation-timeline: view()) {
+  .story-card-illustration { animation: story-house-drift 1s linear both; animation-timeline: view(block); animation-range: entry 0% exit 100%; }
+}
+@supports not (animation-timeline: view()) {
+  .story-card.reveal.is-visible .story-card-illustration { animation: story-house-arrive .85s var(--ease-out) both; }
+}
 .house-roof { position: absolute; top: 14px; left: 37px; width: 185px; height: 185px; border-top: 8px solid var(--ink); border-left: 8px solid var(--ink); transform: rotate(45deg); }
 .house-body { position: absolute; right: 17px; bottom: 5px; left: 17px; height: 157px; border: 6px solid var(--ink); background: var(--cream); }
 .house-body::before, .house-body::after { position: absolute; top: 28px; width: 37px; height: 40px; border: 4px solid var(--ink); content: ""; background: #b4d7dc; }
@@ -473,6 +484,8 @@ html.js .service-card:nth-child(4) { transition-delay: .24s; }
   .story-copy > p:not(.eyebrow) { font-size: .84rem; }
   .story-card { width: min(100%, 420px); min-height: 390px; justify-self: center; }
   .story-card-illustration { top: 25%; transform: translateX(-50%) scale(.88); }
+  @supports (animation-timeline: view()) { .story-card-illustration { animation-name: story-house-drift-mobile; } }
+  @supports not (animation-timeline: view()) { .story-card.reveal.is-visible .story-card-illustration { animation-name: story-house-arrive-mobile; } }
   .story-bottom { align-items: flex-start; flex-direction: column; gap: 1rem; padding-top: 1.3rem; padding-bottom: 1.4rem; }
   .story-words { width: 100%; justify-content: space-between; gap: .4rem; font-size: .49rem; }
   .closing { padding-top: 4.5rem; padding-bottom: 4.5rem; }
@@ -534,6 +547,7 @@ html.js .service-card:nth-child(4) { transition-delay: .24s; }
   .intro-screen { transition: none; }
   .cursor-aura { display: none; }
   html.js .reveal { opacity: 1; transform: none; }
+  .story-card-illustration { animation: none !important; }
 }
 
 @media print {

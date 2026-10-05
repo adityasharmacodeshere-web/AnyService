@@ -31,7 +31,7 @@ The site uses HTML, CSS and vanilla JavaScript. It runs from its folder without 
 
 Midnight blue gives the service a dependable base. Repair-shop lime and warm coral bring friendliness and optimism. Rounded system typography, compact mono labels and candid copy keep the brand approachable without loading external fonts.
 
-The welcome screen introduces the mark and motto before lifting away. On the home page, content reveals as it enters view and a progress strip follows scrolling. The hero illustration leans toward a fine pointer; key buttons respond to pointer movement. Touchscreens skip cursor effects and the page respects reduced-motion preferences.
+The welcome screen introduces the mark and motto before lifting away. On the home page, content reveals as it enters view and a progress strip follows scrolling. In the story section, the house illustration drifts gently upward as its card passes through the viewport, using a CSS view timeline with an entrance-animation fallback. The hero illustration leans toward a fine pointer; key buttons respond to pointer movement. Touchscreens skip cursor effects and the page respects reduced-motion preferences.
 
 Service cards and visit choices update one shared, keyboard-operable summary. Choices carry through to the request form. Browser validation checks the address and requires at least one reply route: mobile or email. The request action opens a pre-addressed email draft so the visitor can review or change it before sending.
 

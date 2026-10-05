@@ -14,4 +14,4 @@ The logo, service illustrations, house artwork and small icons were created spec
 
 ## Offline presentation
 
-Open `index.html`, select **Press to step inside**, and explore the responsive home page, scroll reveals, pointer response and visit picker. The request form validates the details and prepares a pre-addressed email that can be reviewed before sending. Open `privacy.html` for the information-handling notice.
+Open `index.html`, select **Press to step inside**, and explore the responsive home page, scroll reveals, the story illustration that drifts with scroll, pointer response and visit picker. The request form validates the details and prepares a pre-addressed email that can be reviewed before sending. Open `privacy.html` for the information-handling notice.
